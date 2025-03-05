@@ -1,10 +1,10 @@
 import { IoCContainer } from '@fathym/ioc';
-import { EaCRuntimePlugin, EaCRuntimePluginConfig } from '@fathym/eac/runtime/plugins';
-import { EaCRuntimeConfig } from '@fathym/eac/runtime/config';
+import { EaCRuntimeConfig, EaCRuntimePluginConfig } from '@fathym/eac/runtime/config';
+import { EaCRuntimePlugin } from '@fathym/eac/runtime/plugins';
 import { EverythingAsCode } from '@fathym/eac';
 import { EverythingAsCodeApplications } from '@fathym/eac-applications';
 import { EaCAPIProcessor } from '@fathym/eac-applications/processors';
-import { EaCLocalDistributedFileSystemDetails } from '@fathym/eac-dfs';
+import { EaCLocalDistributedFileSystemDetails } from '@fathym/eac/dfs';
 
 export default class RuntimePlugin implements EaCRuntimePlugin {
   constructor() {}
@@ -76,6 +76,11 @@ export default class RuntimePlugin implements EaCRuntimePlugin {
               DefaultFile: 'index.ts',
               Extensions: ['ts'],
             } as EaCLocalDistributedFileSystemDetails,
+          },
+        },
+        $GlobalOptions: {
+          DFSs: {
+            PreventWorkers: true,
           },
         },
       },

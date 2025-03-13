@@ -38,13 +38,13 @@ export default class RuntimePlugin implements EaCRuntimePlugin {
                 Port: config.Server.port || 8000,
               },
               'open-biotech.fathym.com': {
-                Hostname: 'mosaic.fathym.com',
+                Hostname: 'open-biotech.fathym.com',
               },
               'www.openbiotech.co': {
                 Hostname: 'www.openbiotech.co',
               },
-              'open-biotech-api-runtime.azurewebsites.net': {
-                Hostname: 'open-biotech-api-runtime.azurewebsites.net',
+              'open-biotech-web-runtime.azurewebsites.net': {
+                Hostname: 'open-biotech-web-runtime.azurewebsites.net',
               },
             },
             ModifierResolvers: {},

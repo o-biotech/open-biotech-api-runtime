@@ -4,12 +4,22 @@ import {
   EaCAzureCloudsStewardPlugin,
   EaCAzureSecretsStewardPlugin,
 } from '@fathym/eac-azure/steward/plugins';
+import {
+  EaCLicensingAPIPlugin,
+  EaCLicensingStewardPlugin,
+} from '@fathym/eac-licensing/steward/plugins';
 import { EaCRuntimeConfig, EaCRuntimePluginConfig } from '@fathym/eac/runtime/config';
 import { EaCRuntimePlugin } from '@fathym/eac/runtime/plugins';
 import { EverythingAsCode } from '@fathym/eac';
 import { EverythingAsCodeApplications } from '@fathym/eac-applications';
 import { EaCAPIProcessor } from '@fathym/eac-applications/processors';
 import { EaCLocalDistributedFileSystemDetails } from '@fathym/eac/dfs';
+import { EaCIoTStewardPlugin } from '@fathym/eac-iot/steward/plugins';
+import {
+  EaCDevOpsActionsStewardPlugin,
+  EaCSourceConnectionsStewardPlugin,
+  EaCSourcesStewardPlugin,
+} from '@fathym/eac-sources/steward/plugins';
 import { EaCJWTValidationModifierDetails } from '@fathym/eac-applications/modifiers';
 
 export default class RuntimePlugin implements EaCRuntimePlugin {
@@ -28,6 +38,13 @@ export default class RuntimePlugin implements EaCRuntimePlugin {
             },
           },
         }),
+        new EaCLicensingAPIPlugin({
+          Application: {
+            JWTValidationModifier: {
+              Lookup: 'jwtValidate',
+            },
+          },
+        }),
         new EaCAzureCloudsStewardPlugin({
           Application: {
             JWTValidationModifier: {
@@ -37,6 +54,42 @@ export default class RuntimePlugin implements EaCRuntimePlugin {
         }),
         new EaCAzureSecretsStewardPlugin({
           Application: {
+            JWTValidationModifier: {
+              Lookup: 'jwtValidate',
+            },
+          },
+        }),
+        new EaCIoTStewardPlugin({
+          Application: {
+            JWTValidationModifier: {
+              Lookup: 'jwtValidate',
+            },
+          },
+        }),
+        new EaCSourceConnectionsStewardPlugin({
+          Application: {
+            JWTValidationModifier: {
+              Lookup: 'jwtValidate',
+            },
+          },
+        }),
+        new EaCSourcesStewardPlugin({
+          Application: {
+            JWTValidationModifier: {
+              Lookup: 'jwtValidate',
+            },
+          },
+        }),
+        new EaCDevOpsActionsStewardPlugin({
+          Application: {
+            JWTValidationModifier: {
+              Lookup: 'jwtValidate',
+            },
+          },
+        }),
+        new EaCLicensingStewardPlugin({
+          Application: {
+            Path: '/api/steward/licenses*',
             JWTValidationModifier: {
               Lookup: 'jwtValidate',
             },

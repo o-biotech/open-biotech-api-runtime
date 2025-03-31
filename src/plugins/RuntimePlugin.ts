@@ -4,6 +4,7 @@ import {
   EaCAzureCloudsStewardPlugin,
   EaCAzureSecretsStewardPlugin,
 } from '@fathym/eac-azure/steward/plugins';
+import { EaCDenoKVDetails } from '@fathym/eac-deno-kv';
 import {
   EaCLicensingAPIPlugin,
   EaCLicensingStewardPlugin,
@@ -166,6 +167,18 @@ export default class RuntimePlugin implements EaCRuntimePlugin {
               Name: 'Validate JWT',
               Description: 'Validate incoming JWTs to restrict access.',
             } as EaCJWTValidationModifierDetails,
+          },
+        },
+        DenoKVs: {
+          eac: {
+            Details: {
+              Type: "DenoKV",
+              Name: "EaC Steward Commit DenoKV",
+              Description:
+                "The Deno KV database to use for the commit processing of an EaC",
+              DenoKVPath: Deno.env.get("EAC_DENO_KV_PATH") ||
+                undefined,
+            } as EaCDenoKVDetails,
           },
         },
         $GlobalOptions: {

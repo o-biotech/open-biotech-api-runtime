@@ -35,7 +35,7 @@
     "@fathym/eac-licensing": "jsr:@fathym/eac-licensing@0.0.27",
     "@fathym/eac-sources": "jsr:@fathym/eac-sources@0.0.16",
     "@fathym/ioc": "jsr:@fathym/ioc@0.0.14",
-    "@o-biotech/common": "jsr:@o-biotech/common@0.0.12",
+    "@o-biotech/common": "jsr:@o-biotech/common@0.0.14",
     "@std/assert": "jsr:@std/assert@1.0.6",
     "@std/log": "jsr:@std/log@0.224.6"
   },

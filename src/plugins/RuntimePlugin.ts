@@ -1,4 +1,9 @@
 import { IoCContainer } from '@fathym/ioc';
+import {
+  EaCAzureAPIPlugin,
+  EaCAzureCloudsStewardPlugin,
+  EaCAzureSecretsStewardPlugin,
+} from '@fathym/eac-azure/steward/plugins';
 import { EaCRuntimeConfig, EaCRuntimePluginConfig } from '@fathym/eac/runtime/config';
 import { EaCRuntimePlugin } from '@fathym/eac/runtime/plugins';
 import { EverythingAsCode } from '@fathym/eac';
@@ -14,7 +19,29 @@ export default class RuntimePlugin implements EaCRuntimePlugin {
       EverythingAsCode & EverythingAsCodeApplications
     > = {
       Name: RuntimePlugin.name,
-      Plugins: [],
+      Plugins: [
+        new EaCAzureAPIPlugin({
+          Application: {
+            JWTValidationModifier: {
+              Lookup: 'jwtValidate',
+            },
+          },
+        }),
+        new EaCAzureCloudsStewardPlugin({
+          Application: {
+            JWTValidationModifier: {
+              Lookup: 'jwtValidate',
+            },
+          },
+        }),
+        new EaCAzureSecretsStewardPlugin({
+          Application: {
+            JWTValidationModifier: {
+              Lookup: 'jwtValidate',
+            },
+          },
+        }),
+      ],
       IoC: new IoCContainer(),
       EaC: {
         Projects: {
@@ -78,6 +105,15 @@ export default class RuntimePlugin implements EaCRuntimePlugin {
             } as EaCLocalDistributedFileSystemDetails,
           },
         },
+        // Modifiers: {
+        //   jwtValidate: {
+        //     Details: {
+        //       Type: 'JWTValidation',
+        //       Name: 'Validate JWT',
+        //       Description: 'Validate incoming JWTs to restrict access.',
+        //     } as EaCJWTValidationModifierDetails,
+        //   },
+        // },
         $GlobalOptions: {
           DFSs: {
             PreventWorkers: true,

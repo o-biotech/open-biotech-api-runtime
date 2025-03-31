@@ -10,6 +10,7 @@ import { EverythingAsCode } from '@fathym/eac';
 import { EverythingAsCodeApplications } from '@fathym/eac-applications';
 import { EaCAPIProcessor } from '@fathym/eac-applications/processors';
 import { EaCLocalDistributedFileSystemDetails } from '@fathym/eac/dfs';
+import { EaCJWTValidationModifierDetails } from '@fathym/eac-applications/modifiers';
 
 export default class RuntimePlugin implements EaCRuntimePlugin {
   constructor() {}
@@ -54,15 +55,15 @@ export default class RuntimePlugin implements EaCRuntimePlugin {
             ResolverConfigs: {
               localhost: {
                 Hostname: 'localhost',
-                Port: config.Servers[0].port || 8000,
+                Port: config.Servers![0].port || 8000,
               },
               '127.0.0.1': {
                 Hostname: '127.0.0.1',
-                Port: config.Servers[0].port || 8000,
+                Port: config.Servers![0].port || 8000,
               },
               'host.docker.internal': {
                 Hostname: 'host.docker.internal',
-                Port: config.Servers[0].port || 8000,
+                Port: config.Servers![0].port || 8000,
               },
               'open-biotech.fathym.com': {
                 Hostname: 'open-biotech.fathym.com',

@@ -105,15 +105,15 @@ export default class RuntimePlugin implements EaCRuntimePlugin {
             } as EaCLocalDistributedFileSystemDetails,
           },
         },
-        // Modifiers: {
-        //   jwtValidate: {
-        //     Details: {
-        //       Type: 'JWTValidation',
-        //       Name: 'Validate JWT',
-        //       Description: 'Validate incoming JWTs to restrict access.',
-        //     } as EaCJWTValidationModifierDetails,
-        //   },
-        // },
+        Modifiers: {
+          jwtValidate: {
+            Details: {
+              Type: 'JWTValidation',
+              Name: 'Validate JWT',
+              Description: 'Validate incoming JWTs to restrict access.',
+            } as EaCJWTValidationModifierDetails,
+          },
+        },
         $GlobalOptions: {
           DFSs: {
             PreventWorkers: true,

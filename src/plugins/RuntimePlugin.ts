@@ -77,7 +77,7 @@ export default class RuntimePlugin implements EaCRuntimePlugin {
             ModifierResolvers: {},
             ApplicationResolvers: {
               api: {
-                PathPattern: '/v1/data*',
+                PathPattern: '/api*',
                 Priority: 100,
               },
             },

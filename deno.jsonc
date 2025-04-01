@@ -16,7 +16,7 @@
     "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
     "clean:docker": "docker stop open-biotech-api-runtime || true && docker rm open-biotech-api-runtime || true",
     "deploy": "npx rimraf cov && deno task build && deno task test && npx ftm git",
-    "deploy:docker": "docker run --name open-biotech-api-runtime --network o-biotech-runtimes --env-file .env.docker -dp 127.0.0.1:5402:5402 open-biotech-api-runtime",
+    "deploy:docker": "docker run --name open-biotech-api-runtime --network o-biotech-runtimes --env-file .env.docker -dp 127.0.0.1:5402:5402 -v C:\\fathym\\denokv\\open-biotech-api-runtime:/_project/denokv open-biotech-api-runtime",
     "dev": "deno run -A --watch=apps/,configs/,data/,routes/,src/,static/ dev.ts",
     "network:docker": "docker network create o-biotech-runtimes || true",
     "publish:check": "deno publish --dry-run --allow-dirty",

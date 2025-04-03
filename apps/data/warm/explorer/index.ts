@@ -24,7 +24,6 @@ export const handler: EaCRuntimeHandlerSet<OpenBiotechWebAPIState> = {
     const eacAzureSvc = await loadEaCAzureAPISvc(ctx.State.EaCJWT!);
 
     const queryResp = await eacAzureSvc.Explorer.Query(
-      entLookup,
       cloudLookup,
       resGroupLookup,
       resLookups,
@@ -32,7 +31,7 @@ export const handler: EaCRuntimeHandlerSet<OpenBiotechWebAPIState> = {
       expReq,
     );
 
-    return Response.json(JSON.stringify(queryResp));
+    return Response.json(queryResp);
   },
 
   async POST(req, ctx) {
@@ -57,6 +56,6 @@ export const handler: EaCRuntimeHandlerSet<OpenBiotechWebAPIState> = {
       expReq,
     );
 
-    return Response.json(JSON.stringify(queryResp));
+    return Response.json(queryResp);
   },
 };

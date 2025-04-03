@@ -9,7 +9,10 @@ import {
   EaCLicensingAPIPlugin,
   EaCLicensingStewardPlugin,
 } from '@fathym/eac-licensing/steward/plugins';
-import { EaCRuntimeConfig, EaCRuntimePluginConfig } from '@fathym/eac/runtime/config';
+import {
+  EaCRuntimeConfig,
+  EaCRuntimePluginConfig,
+} from '@fathym/eac/runtime/config';
 import { EaCRuntimePlugin } from '@fathym/eac/runtime/plugins';
 import { EverythingAsCode } from '@fathym/eac';
 import { EverythingAsCodeApplications } from '@fathym/eac-applications';
@@ -132,7 +135,7 @@ export default class RuntimePlugin implements EaCRuntimePlugin {
             ModifierResolvers: {},
             ApplicationResolvers: {
               api: {
-                PathPattern: '/api*',
+                PathPattern: '/data*',
                 Priority: 100,
               },
             },
@@ -143,6 +146,11 @@ export default class RuntimePlugin implements EaCRuntimePlugin {
             Details: {
               Name: 'Local API',
               Description: 'Default local APIs.',
+            },
+            ModifierResolvers: {
+              jwtValidate: {
+                Priority: 10000,
+              },
             },
             Processor: {
               Type: 'API',
@@ -174,9 +182,9 @@ export default class RuntimePlugin implements EaCRuntimePlugin {
             Details: {
               Type: 'DenoKV',
               Name: 'EaC Steward Commit DenoKV',
-              Description: 'The Deno KV database to use for the commit processing of an EaC',
-              DenoKVPath: Deno.env.get('EAC_DENO_KV_PATH') ||
-                undefined,
+              Description:
+                'The Deno KV database to use for the commit processing of an EaC',
+              DenoKVPath: Deno.env.get('EAC_DENO_KV_PATH') || undefined,
             } as EaCDenoKVDetails,
           },
         },

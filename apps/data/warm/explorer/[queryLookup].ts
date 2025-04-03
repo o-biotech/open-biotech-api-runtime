@@ -7,7 +7,7 @@ import { loadEaCAzureAPISvc } from '@fathym/eac-azure/steward/clients';
 
 export const handler: EaCRuntimeHandlerSet<OpenBiotechWebAPIState> = {
   async GET(_req, ctx) {
-    const entLookup = ctx.State.EnterpriseLookup;
+    const entLookup = ctx.State.EnterpriseLookup!;
 
     const _username = ctx.State.Username;
 
@@ -19,7 +19,7 @@ export const handler: EaCRuntimeHandlerSet<OpenBiotechWebAPIState> = {
 
     const eacSvc = await loadEaCStewardSvc(ctx.State.EaCJWT!);
 
-    const eac: OpenBiotechEaC = await eacSvc.EaC.Get(entLookup);
+    const eac: OpenBiotechEaC = await eacSvc.EaC.Get();
 
     let expReq: ExplorerRequest = {
       Query: `Devices
@@ -48,6 +48,6 @@ export const handler: EaCRuntimeHandlerSet<OpenBiotechWebAPIState> = {
       expReq,
     );
 
-    return Response.json(JSON.stringify(queryResp));
+    return Response.json(queryResp);
   },
 };

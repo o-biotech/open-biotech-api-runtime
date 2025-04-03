@@ -172,11 +172,10 @@ export default class RuntimePlugin implements EaCRuntimePlugin {
         DenoKVs: {
           eac: {
             Details: {
-              Type: "DenoKV",
-              Name: "EaC Steward Commit DenoKV",
-              Description:
-                "The Deno KV database to use for the commit processing of an EaC",
-              DenoKVPath: Deno.env.get("EAC_DENO_KV_PATH") ||
+              Type: 'DenoKV',
+              Name: 'EaC Steward Commit DenoKV',
+              Description: 'The Deno KV database to use for the commit processing of an EaC',
+              DenoKVPath: Deno.env.get('EAC_DENO_KV_PATH') ||
                 undefined,
             } as EaCDenoKVDetails,
           },

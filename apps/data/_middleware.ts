@@ -8,9 +8,9 @@ export const handler: EaCRuntimeHandlerSet<OpenBiotechWebAPIState> = async (
 ) => {
   const parentEaCSvc = await loadEaCStewardSvc();
 
-  const entLookup = ctx.State.EnterpriseLookup;
+  const entLookup = ctx.State.EnterpriseLookup!;
 
-  const username = ctx.State.Username;
+  const username = ctx.State.Username!;
 
   const jwt = await parentEaCSvc.EaC.JWT(entLookup, username);
 

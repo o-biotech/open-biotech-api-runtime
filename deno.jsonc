@@ -34,10 +34,10 @@
     "@fathym/eac-deno-kv": "jsr:@fathym/eac-deno-kv@0.0.13",
     "@fathym/eac-iot": "jsr:@fathym/eac-iot@0.0.19",
     "@fathym/eac-licensing": "jsr:@fathym/eac-licensing@0.0.29",
-    // "@fathym/eac-licensing/steward/plugins": "../../fathym-deno/eac-licensing/src/steward/plugins/.exports.ts",
+    "@fathym/eac-licensing/steward/plugins": "../../fathym-deno/eac-licensing/src/steward/plugins/.exports.ts",
     "@fathym/eac-sources": "jsr:@fathym/eac-sources@0.0.16",
     "@fathym/ioc": "jsr:@fathym/ioc@0.0.14",
-    "@o-biotech/common": "jsr:@o-biotech/common@0.0.19",
+    "@o-biotech/common": "jsr:@o-biotech/common@0.0.21",
     "@std/assert": "jsr:@std/assert@1.0.6",
     "@std/log": "jsr:@std/log@0.224.6"
   },

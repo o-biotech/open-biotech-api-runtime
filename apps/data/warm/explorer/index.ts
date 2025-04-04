@@ -5,13 +5,13 @@ import { OpenBiotechWebAPIState } from '@o-biotech/common/state';
 
 export const handler: EaCRuntimeHandlerSet<OpenBiotechWebAPIState> = {
   async GET(_req, ctx) {
-    const entLookup = ctx.State.EnterpriseLookup;
+    const _entLookup = ctx.State.EnterpriseLookup;
 
     const _username = ctx.State.Username;
 
-    const cloudLookup = ctx.State.CloudLookup;
+    const cloudLookup = ctx.State.CloudLookup!;
 
-    const resGroupLookup = ctx.State.ResourceGroupLookup;
+    const resGroupLookup = ctx.State.ResourceGroupLookup!;
 
     const resLookups = ['iot-flow', 'iot-flow-warm'];
 
@@ -35,11 +35,11 @@ export const handler: EaCRuntimeHandlerSet<OpenBiotechWebAPIState> = {
   },
 
   async POST(req, ctx) {
-    const entLookup = ctx.State.EnterpriseLookup;
+    const _entLookup = ctx.State.EnterpriseLookup;
 
-    const cloudLookup = ctx.State.CloudLookup;
+    const cloudLookup = ctx.State.CloudLookup!;
 
-    const resGroupLookup = ctx.State.ResourceGroupLookup;
+    const resGroupLookup = ctx.State.ResourceGroupLookup!;
 
     const resLookups = ['iot-flow', 'iot-flow-warm'];
 
@@ -48,7 +48,6 @@ export const handler: EaCRuntimeHandlerSet<OpenBiotechWebAPIState> = {
     const eacAzureSvc = await loadEaCAzureAPISvc(ctx.State.EaCJWT!);
 
     const queryResp = await eacAzureSvc.Explorer.Query(
-      entLookup,
       cloudLookup,
       resGroupLookup,
       resLookups,

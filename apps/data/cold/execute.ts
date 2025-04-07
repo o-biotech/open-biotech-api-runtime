@@ -32,7 +32,6 @@ export const handler: EaCRuntimeHandlers<OpenBiotechWebAPIState> = {
     ) as boolean;
 
     const resp = await eacAzureSvc.DataLake.Execute(
-      entLookup,
       cloudLookup,
       resGroupLookup,
       resLookups,

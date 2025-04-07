@@ -4,9 +4,9 @@ import { OpenBiotechWebAPIState } from '@o-biotech/common/state';
 
 export const handler: EaCRuntimeHandlers<OpenBiotechWebAPIState> = {
   async GET(req, ctx) {
-    const entLookup = ctx.State.EnterpriseLookup!;
+    const _entLookup = ctx.State.EnterpriseLookup!;
 
-    const cloudLookup = ctx.State.CloudLookup;
+    const cloudLookup = ctx.State.CloudLookup!;
 
     const url = new URL(req.url);
 
@@ -17,7 +17,6 @@ export const handler: EaCRuntimeHandlers<OpenBiotechWebAPIState> = {
     const eacAzureSvc = await loadEaCAzureAPISvc(ctx.State.EaCJWT!);
 
     const authToken = await eacAzureSvc.Cloud.AuthToken(
-      entLookup,
       cloudLookup,
       scopes,
     );
